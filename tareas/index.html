@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Tasks</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- WELCOME / PROFILE SCREEN -->
+  <section id="welcomeScreen" class="welcome-screen">
+    <div class="profile-container">
+      <svg class="profile-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Simple person icon, gris oscuro -->
+        <circle cx="32" cy="20" r="12" fill="#444" />
+        <rect x="20" y="36" width="24" height="20" rx="10" ry="10" fill="#444" />
+      </svg>
+      <h2>Please enter your name</h2>
+      <input id="usernameInput" type="text" placeholder="Your name..." autocomplete="off" />
+      <button id="startBtn">Start</button>
+    </div>
+  </section>
+
+  <!-- GREETING MESSAGE -->
+  <div id="greetingMessage" class="greeting-message"></div>
+
+  <!-- MAIN APP -->
+  <main id="app" class="hidden">
+    <!-- Animated header -->
+    <h1 class="intro-text">TASK'S</h1>
+
+    <!-- Panda in bottom left -->
+    <svg class="panda-logo" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" >
+      <!-- Panda head gray -->
+      <circle cx="32" cy="32" r="30" fill="#bbb" />
+      <!-- Panda ears black -->
+      <circle cx="12" cy="12" r="10" fill="#222" />
+      <circle cx="52" cy="12" r="10" fill="#222" />
+      <!-- No eyes or mouth, just face shape -->
+    </svg>
+
+    <!-- Task input area -->
+    <div class="task-input">
+      <input type="text" id="taskInput" placeholder="Add new task..." autocomplete="off" />
+      <button id="addTaskBtn" aria-label="Add Task" title="Add Task">
+        <!-- Plus icon -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00ccff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Task list -->
+    <ul id="taskList" aria-live="polite"></ul>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

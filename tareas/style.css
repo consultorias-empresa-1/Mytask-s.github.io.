@@ -1,0 +1,297 @@
+/* --- General resets --- */
+* {
+  box-sizing: border-box;
+}
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(45deg, #222, #555);
+  color: #eee;
+  overflow-x: hidden;
+}
+
+/* --- Welcome Screen --- */
+.welcome-screen {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(45deg, #f0f0f0, #aaa);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: bgFade 3s ease infinite alternate;
+  z-index: 10;
+}
+
+@keyframes bgFade {
+  0% { background: linear-gradient(45deg, #f0f0f0, #aaa); }
+  100% { background: linear-gradient(45deg, #aaa, #f0f0f0); }
+}
+
+.profile-container {
+  background: rgba(34,34,34,0.9);
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 0 15px #22cc55;
+  width: 320px;
+}
+
+.profile-container h2 {
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #00ccff;
+}
+
+.profile-container input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1.1rem;
+  border: 2px solid #00ccff;
+  border-radius: 25px;
+  background: transparent;
+  color: #eee;
+  outline: none;
+  margin-bottom: 20px;
+  transition: border-color 0.3s ease;
+}
+
+.profile-container input:focus {
+  border-color: #22cc55;
+  background: rgba(255 255 255 / 0.1);
+}
+
+.profile-container button {
+  background: #00ccff;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  color: #111;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.profile-container button:hover {
+  background: #22cc55;
+}
+
+/* Profile icon styling */
+.profile-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 25px;
+  filter: drop-shadow(0 0 6px #00ccffaa);
+}
+
+/* --- Greeting Message --- */
+.greeting-message {
+  position: fixed;
+  top: 40%;
+  width: 100%;
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 900;
+  color: #00ccff;
+  text-transform: uppercase;
+  user-select: none;
+  pointer-events: none;
+  opacity: 0;
+  filter: drop-shadow(0 0 10px #00ccffaa);
+  z-index: 11;
+  transition: opacity 1s ease;
+}
+
+/* --- Main app hidden by default --- */
+.hidden {
+  display: none;
+}
+
+/* --- Main app styles --- */
+main {
+  max-width: 600px;
+  margin: 70px auto 40px auto;
+  padding: 0 20px;
+}
+
+/* Animated intro text "TASK'S" */
+.intro-text {
+  font-weight: 900;
+  font-size: 5rem;
+  text-transform: uppercase;
+  color: #00ccff;
+  filter: drop-shadow(0 0 10px #00ccffaa);
+  user-select: none;
+  margin-bottom: 40px;
+  overflow: visible;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
+/* Animate each letter moving horizontally ~10px and color shift */
+.intro-text span {
+  display: inline-block;
+  animation: moveSideToSide 3s ease-in-out infinite, colorShift 3s ease-in-out infinite;
+}
+
+@keyframes moveSideToSide {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(10px); }
+}
+
+@keyframes colorShift {
+  0%, 100% { color: #0066ff; filter: drop-shadow(0 0 10px #00ccffaa); }
+  50% { color: #00ffff; filter: drop-shadow(0 0 15px #00ffffcc); }
+}
+
+/* Panda logo bottom-left */
+.panda-logo {
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+  width: 80px;
+  height: 80px;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 8px #00ccff99);
+  user-select: none;
+  pointer-events: none;
+}
+
+/* --- Task input --- */
+.task-input {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  gap: 10px;
+}
+
+.task-input input[type="text"] {
+  flex-grow: 1;
+  font-size: 1.1rem;
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: 2px solid #00ccff;
+  outline: none;
+  background: rgba(255 255 255 / 0.1);
+  color: #eee;
+  transition: border-color 0.3s ease;
+}
+
+.task-input input[type="text"]:focus {
+  border-color: #22cc55;
+  background: rgba(255 255 255 / 0.15);
+}
+
+.task-input button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.task-input button:hover svg {
+  stroke: #22cc55;
+  transform: scale(1.15);
+}
+
+/* --- Task List --- */
+#taskList {
+  list-style: none;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#taskList li {
+  background: rgba(0 204 255 / 0.15);
+  padding: 12px 20px;
+  margin-bottom: 10px;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  color: #eee;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#taskList li:hover {
+  background: rgba(0 204 255 / 0.4);
+}
+
+#taskList li.completed {
+  text-decoration: line-through;
+  color: #aaa;
+  background: rgba(0 204 255 / 0.1);
+  cursor: default;
+  user-select: text;
+}
+
+#taskList li .delete-btn {
+  background: transparent;
+  border: none;
+  color: #f55;
+  font-weight: 900;
+  font-size: 1.2rem;
+  cursor: pointer;
+  user-select: none;
+  margin-left: 10px;
+  padding: 0 5px;
+  transition: color 0.3s ease;
+}
+
+#taskList li .delete-btn:hover {
+  color: #ff4444;
+}
+
+/* Scrollbar */
+main::-webkit-scrollbar {
+  width: 8px;
+}
+
+main::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+main::-webkit-scrollbar-thumb {
+  background: #00ccff99;
+  border-radius: 10px;
+}
+
+/* Small animation for add/delete confirmation checkmark */
+.checkmark {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #22cc55;
+  color: white;
+  font-size: 14px;
+  font-weight: 900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0;
+  transform: translateX(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Show checkmark with animation */
+.checkmark.show {
+  opacity: 1;
+  transform: translateX(5px);
+  transition: opacity 2s ease, transform 2s ease;
+}
